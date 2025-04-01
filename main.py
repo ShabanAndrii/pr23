@@ -1,27 +1,12 @@
-import sys
+import tkinter as tk
 
+window = tk.Tk()
+window.title("Simple Text Editor")
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QLabel, QMainWindow
+window.rowconfigure(0, minsize=800, weight=1)
+window.columnconfigure(1, minsize=800, weight=1)
 
-
-class Window(QMainWindow):
-    """Main Window."""
-
-    def __init__(self, parent=None):
-        """Initializer."""
-        super().__init__(parent)
-        self.setWindowTitle("Python Menus & Toolbars")
-        self.resize(400, 200)
-        self.centralWidget = QLabel("Hello, World")
-        self.centralWidget.setAlignment(
-            Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter
-        )
-        self.setCentralWidget(self.centralWidget)
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    win = Window()
-    win.show()
-    sys.exit(app.exec())
+text_edit = tk.Text(window)
+frm_buttons = tk.Frame(window, relief=tk.RAISED, bd=2)
+btn_open = tk.Button(frm_buttons, text="Open")
+btn_save = tk.Button(frm_buttons, text="Save as...")
